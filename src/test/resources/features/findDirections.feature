@@ -9,7 +9,7 @@ Feature: Function to test functionality for determining directions between to po
     And User chooses transport <type of transport>
     And User clicks button Go
     Then User checks distance between points
-    And User closes browser
+
 
     Examples:
       | from             | to         | type of transport |

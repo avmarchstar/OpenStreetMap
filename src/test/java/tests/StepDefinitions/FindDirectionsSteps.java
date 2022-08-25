@@ -5,20 +5,24 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.testng.Assert;
+import org.junit.Assert;
 import pages.DirectionPage;
 import pages.MainPage;
 import tests.BaseTest;
 
+
 public class FindDirectionsSteps extends BaseTest {
+
 
     MainPage mainPage;
     DirectionPage directionPage;
 
+
     @Given("User on site")
     public void user_on_site() {
 
-        initDriver();
+        System.out.println(driver.getTitle());
+        Assert.assertTrue(driver.getTitle().toLowerCase().contains("openstreetmap"));
 
     }
 
@@ -52,13 +56,8 @@ public class FindDirectionsSteps extends BaseTest {
     @Then("User checks distance between points")
     public void user_checks_distance_between_points() {
 
-        Assert.assertEquals(directionPage.getDistance_between_points(), Data.DISTANCE_KIEV_CAMBRIDGE);
+        Assert.assertEquals(Data.DISTANCE_KIEV_CAMBRIDGE, directionPage.getDistance_between_points());
 
     }
 
-    @And("User closes browser")
-    public void user_closes_browser() {
-        tearDown();
-
-    }
 }
